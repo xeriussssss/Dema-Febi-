@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DEMA FEBI 2026 - Kabinet Nebula Leviosa</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Proker Filter */
+      .proker-filters {
+        display: flex;
+        justify-content: center;
+        gap: 0.8rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+      }
+      .proker-filter-btn {
+        padding: 0.6rem 1.4rem;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #fff;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: 0.3s;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.85rem;
+      }
+      .proker-filter-btn.active,
+      .proker-filter-btn:hover {
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        border-color: transparent;
+      }
+
+      /* Proker bidang panel */
+      .proker-panel {
+        display: none;
+      }
+      .proker-panel.active {
+        display: block;
+      }
+
+      /* Proker card grid */
+      .proker-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .proker-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 2rem;
+        transition: 0.3s;
+      }
+      .proker-card:hover {
+        transform: translateY(-5px);
+        border-color: #4ecdc4;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      }
+      .proker-card-type {
+        display: inline-block;
+        padding: 0.3rem 1rem;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        letter-spacing: 1px;
+      }
+      .proker-card-type.proker {
+        background: linear-gradient(45deg, #ff6b6b33, #ff6b6b22);
+        color: #ff6b6b;
+        border: 1px solid #ff6b6b55;
+      }
+      .proker-card-type.agenda {
+        background: linear-gradient(45deg, #4ecdc422, #4ecdc411);
+        color: #4ecdc4;
+        border: 1px solid #4ecdc455;
+      }
+      .proker-card h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+        color: #fff;
+      }
+      .proker-card ul {
+        list-style: none;
+        padding: 0;
+      }
+      .proker-card ul li {
+        color: #b0b8c5;
+        padding: 0.4rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        font-size: 0.9rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+      .proker-card ul li:last-child {
+        border-bottom: none;
+      }
+      .proker-card ul li::before {
+        content: "▸";
+        color: #4ecdc4;
+        flex-shrink: 0;
+        margin-top: 0.1rem;
+      }
+      .proker-bidang-title {
+        text-align: center;
+        color: #4ecdc4;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">DEMA FEBI 2026</div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#kabinet">Kabinet</a>
+        <a href="#visimisi">Visi Misi</a>
+        <a href="#pengurus">Pengurus</a>
+        <a href="#proker">Program Kerja</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-subtitle">Kabinet Of</div>
+          <h1 class="hero-title"><span>Nebula Leviosa</span></h1>
+          <p class="hero-description">
+            Bersama membangun FEBI yang lebih baik melalui inovasi, kolaborasi,
+            dan dedikasi untuk seluruh mahasiswa.
+          </p>
+          <a href="#proker" class="cta-button">Jelajahi Program Kerja</a>
+        </div>
+        <div class="hero-logo">
+          <div class="logo-container">
+            <img
+              src="img/logo_kabinet-removebg-preview.png"
+              alt="Logo Kabinet Nebula Leviosa"
+              class="floating-logo"
+            />
+            <div class="logo-glow"></div>
+            <div class="logo-ring"></div>
+            <div class="logo-ring-2"></div>
+            <div class="logo-caption">
+              <h3>Nebula Leviosa</h3>
+              <p>Kabinet DEMA FEBI 2026</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kabinet Section -->
+    <section id="kabinet" class="kabinet">
+      <h2 class="section-title">Kabinet Nebula Leviosa</h2>
+      <div class="kabinet-content">
+        <div class="kabinet-text">
+          <h3>Bergerak, Berinovasi, Berdampak</h3>
+          <p>
+            Nebula adalah istilah astronomi yang bermakna awan kosmik tempat
+            lahirnya bintang dan sistem baru. Dalam konteks organisasi, Nebula
+            melambangkan fase pembentukan, potensi besar, dan proses
+            transformasi.
+          </p>
+          <p style="margin-top: 1rem">"Bersama Mengudara, Mari Berdampak"</p>
+        </div>
+        <div class="kabinet-image">
+          <img
+            src="img/logo_kabinet-removebg-preview.png"
+            alt="Kabinet DEMA FEBI"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Visi Misi Section -->
+    <section id="visimisi">
+      <h2 class="section-title">Visi & Misi</h2>
+      <div class="visi-misi-container">
+        <div class="visi">
+          <h3>Visi</h3>
+          <p>
+            Mewujudkan DEMA FEBI yang harmonis dalam kepengurusan, aktif
+            mengabdi kepada masyarakat, peka terhadap perkembangan informasi,
+            serta menjunjung tinggi sportifitas dan profesionalitas.
+          </p>
+        </div>
+        <div class="misi">
+          <h3>Misi</h3>
+          <ul>
+            <li>
+              <i class="fas fa-check-circle"></i> Membudayakan komunikasi
+              terbuka antar seluruh ORMAWA FEBI dalam menghadapi berbagai
+              permasalahan, serta menjadi agen solutif yang mendorong lahirnya
+              perubahan positif.
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> Mewujudkan program-program
+              FEBI yang peduli aksi sosial, responsif terhadap isu masyarakat
+              sekitar, dan mampu memberikan kontribusi nyata bagi lingkungan.
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> Menciptakan hubungan internal
+              ORMAWA FEBI yang saling menghargai, dewasa, dan profesional,
+              sehingga tercipta suasana kerja yang nyaman, efektif, dan
+              berlandaskan sportifitas.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pengurus Section -->
+    <section id="pengurus" class="pengurus-section">
+      <h2 class="section-title">Struktur Pengurus</h2>
+      <div class="team-filters">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="inti">Polis Umum</button>
+        <button class="filter-btn" data-filter="bidang1">
+          Dinas Internal dan Kaderisasi (IDK)
+        </button>
+        <button class="filter-btn" data-filter="bidang2">
+          Dinas Diplomasi Eksternal (DIPEKS)
+        </button>
+        <button class="filter-btn" data-filter="bidang3">
+          Dinas Pemberdayaan Sumber Daya Mahasiswa (PSDM)
+        </button>
+        <button class="filter-btn" data-filter="bidang4">
+          Dinas Sosial Masyarakat (SOSMAS)
+        </button>
+        <button class="filter-btn" data-filter="bidang5">
+          Dinas Komunikasi dan Informasi (KOMINFO)
+        </button>
+        <button class="filter-btn" data-filter="bidang6">
+          Dinas Ekonomi Kreatif dan Kewirausahaan (EKRAF)
+        </button>
+        <button class="filter-btn" data-filter="bidang7">
+          Dinas Keagamaan
+        </button>
+        <button class="filter-btn" data-filter="bidang8">
+          Dinas Pemberdayaan Perempuan (PP)
+        </button>
+        <button class="filter-btn" data-filter="bidang9">
+          Dinas Advokasi dan Kesejahteraan Mahasiswa (ADKESMA)
+        </button>
+        <button class="filter-btn" data-filter="bidangX">
+          Dinas Administrasi dan Keuangan (DISMINKEU)
+        </button>
+      </div>
+
+      <div class="team-grid">
+        <!-- Polis Umum -->
+        <div class="team-card" data-category="inti">
+          <div class="card-image">
+            <img src="img/IMG-20251220-WA0093.jpg" alt="Ketua DEMA" />
+          </div>
+          <div class="card-info">
+            <h3>Alwy Farid Sayuti</h3>
+            <p>Ketua Umum</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a
+              ><a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-category="inti">
+          <div class="card-image">
+            <img src="img/Adisty Raudhatul Hasanah .jpg" alt="Sekretaris" />
+          </div>
+          <div class="card-info">
+            <h3>Adisty Raudhatul Hasanah</h3>
+            <p>Sekretaris Jendral</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a
+              ><a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-category="inti">
+          <div class="card-image">
+            <img src="img/dheva valencia.jpeg" alt="Bendahara" />
+          </div>
+          <div class="card-info">
+            <h3>Dheva Valencia</h3>
+            <p>Bendahara Umum</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a
+              ><a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bidang 1: IDK -->
+        <div class="team-card" data-category="bidang1">
+          <div class="card-image">
+            <img src="img/Aurellino daffa.jpg" alt="Kadis IDK" />
+          </div>
+          <div class="card-info">
+            <h3>Aurellino Daffa</h3>
+            <p>Kadis Internal dan Kaderisasi</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-category="bidang1">
+          <div class="card-image">
+            <img
+              src="img/8d1277be-0614-478d-b9bc-2df8b47c75b8.jpg"
+              alt="Sekdis IDK"
+            />
+          </div>
+          <div class="card-info">
+            <h3>Eva Saragih</h3>
+            <p>Sekretaris Dinas Internal dan Kaderisasi</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bidang 2: DIPEKS -->
+        <div class="team-card" data-category="bidang2">
+          <div class="card-image">
+            <img src="img/Aditya Maulana Febrian.jpg" alt="Kadis DIPEKS" />
+          </div>
+          <div class="card-info">
+            <h3>Aditya Maulana Febrian</h3>
+            <p>Kepala Dinas Diplomasi Eksternal</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-category="bidang2">
+          <div class="card-image">
+            <img src="img/Silvia oktaviani.jpg" alt="Sekdis DIPEKS" />
+          </div>
+          <div class="card-info">
+            <h3>Silvia Oktaviani</h3>
+            <p>Sekretaris Dinas Diplomasi Eksternal</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bidang 3: PSDM -->
+        <div class="team-card" data-category="bidang3">
+          <div class="card-image">
+            <img src="img/IMG-20250207-WA0095.jpg" alt="Kadis PSDM" />
+          </div>
+          <div class="card-info">
+            <h3>Alfandes Putra Hidayat</h3>
+            <p>Kepala Dinas Pemberdayaan Sumber Daya Mahasiswa</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-category="bidang3">
+          <div class="card-image">
+            <img src="img/rahma nadya.jpg" alt="Sekdis PSDM" />
+          </div>
+          <div class="card-info">
+            <h3>Rahma Nadya</h3>
+            <p>Sekretaris Dinas Pemberdayaan Sumber Daya Mahasiswa</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bidang 4: SOSMAS -->
+        <div class="team-card" data-category="bidang4">
+          <div class="card-image">
+            <img src="img/Aron Eka Pramana putra .jpg" alt="Kadis Sosmas" />
+          </div>
+          <div class="card-info">
+            <h3>Aron Eka Pramana Putra</h3>
+            <p>Kepala Dinas Sosial Masyarakat</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-category="bidang4">
+          <div class="card-image">
+            <img src="fatima.png" alt="Sekdis Sosmas" />
+          </div>
+          <div class="card-info">
+            <h3>Fatimah Azzahra</h3>
+            <p>Sekretaris Dinas Sosial Masyarakat</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bidang 5: KOMINFO -->
+        <div class="team-card" data-category="bidang5">
+          <div class="card-image">
+            <img src="img/hanif.jpeg" alt="Kadis Kominfo" />
+          </div>
+          <div class="card-info">
+            <h3>Hanif Hidayatullah</h3>
+            <p>Kepala Dinas Komunikasi Dan Informasi</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-category="bidang5">
+          <div class="card-image">
+            <img src="img/Fadilla Hardi.jpg" alt="Sekdis Kominfo" />
+          </div>
+          <div class="card-info">
+            <h3>Fadilla Hardi</h3>
+            <p>Sekretaris Dinas Komunikasi Dan Informasi</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-category="bidang5">
+          <div class="card-image">
+            <img src="img/ariel photo.jpeg" alt="Anggota Kominfo" />
+          </div>
+          <div class="card-info">
+            <h3>Ariel Al Muqsith</h3>
+            <p>Anggota Dinas Komunikasi Dan Informasi</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bidang 6: EKRAF -->
+        <div class="team-card" data-category="bidang6">
+          <div class="card-image">
+            <img src="img/Ibnu Roofi (KADIS EKRAF).jpg" alt="Kadis EKRAF" />
+          </div>
+          <div class="card-info">
+            <h3>Ibnu Roofi</h3>
+            <p>Kepala Dinas Ekonomi Kreatif Dan Kewirausahaan</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-category="bidang6">
+          <div class="card-image">
+            <img
+              src="img/REGITA CAHYANI NABILA SEKDIS EKRAF (1).png"
+              alt="Sekdis EKRAF"
+            />
+          </div>
+          <div class="card-info">
+            <h3>Regita Cahyani Nabila</h3>
+            <p>Sekretaris Dinas Ekonomi Kreatif Dan Kewirausahaan</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bidang 7: KEAGAMAAN -->
+        <div class="team-card" data-category="bidang7">
+          <div class="card-image">
+            <img src="img/IMG_5997.PNG" alt="Kadis Keagamaan" />
+          </div>
+          <div class="card-info">
+            <h3>Fachrul Rezha Abdillah</h3>
+            <p>Kepala Dinas Keagamaan</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-category="bidang7">
+          <div class="card-image">
+            <img
+              src="img/Helsinki Agustino_Anggota Keagamaan.JPG"
+              alt="Sekdis Keagamaan"
+            />
+          </div>
+          <div class="card-info">
+            <h3>Helsinki Agustino</h3>
+            <p>Sekretaris Dinas Keagamaan</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bidang 8: PP -->
+        <div class="team-card" data-category="bidang8">
+          <div class="card-image">
+            <img src="img/IMG-20260223-WA0051.jpg" alt="Kadis PP" />
+          </div>
+          <div class="card-info">
+            <h3>Fitria Amanda Handriviani</h3>
+            <p>Kepala Dinas Pemberdayaan Perempuan</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-category="bidang8">
+          <div class="card-image">
+            <img src="img/IMG_20260303_183554.jpg" alt="Sekdis PP" />
+          </div>
+          <div class="card-info">
+            <h3>Sarah Novelina</h3>
+            <p>Sekretaris Dinas Pemberdayaan Perempuan</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bidang 9: ADKESMA -->
+        <div class="team-card" data-category="bidang9">
+          <div class="card-image">
+            <img
+              src="img/Ahmad Jailani (Kadis ADKESMA).jpg"
+              alt="Kadis ADKESMA"
+            />
+          </div>
+          <div class="card-info">
+            <h3>Ahmad Jailani</h3>
+            <p>Kepala Dinas Advokasi Dan Kesejahteraan Mahasiswa</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-category="bidang9">
+          <div class="card-image">
+            <img src="img/DSC_0090.JPG" alt="Sekdis ADKESMA" />
+          </div>
+          <div class="card-info">
+            <h3>Muhammad Tsaqif Alivia</h3>
+            <p>Sekretaris Dinas Advokasi Dan Kesejahteraan Mahasiswa</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bidang X: DISMINKEU -->
+        <div class="team-card" data-category="bidangX">
+          <div class="card-image">
+            <img src="img/Rossi fitriyany.jpg" alt="Kadis DISMINKEU" />
+          </div>
+          <div class="card-info">
+            <h3>Rossi fitriyany</h3>
+            <p>Kepala Dinas Administrasi Dan Keuangan</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card" data-category="bidangX">
+          <div class="card-image">
+            <img src="img/Desi Wulandari .jpg" alt="Sekdis DISMINKEU" />
+          </div>
+          <div class="card-info">
+            <h3>Desi Wulandari</h3>
+            <p>Sekretaris Dinas Administrasi Dan Keuangan</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a
+              ><a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end team-grid -->
+    </section>
+
+    <!-- Program Kerja Section -->
+    <section id="proker">
+      <h2 class="section-title">Program Kerja & Agenda</h2>
+
+      <!-- Filter Buttons -->
+      <div class="proker-filters">
+        <button class="proker-filter-btn active" data-proker="idk">IDK</button>
+        <button class="proker-filter-btn" data-proker="dipeks">DIPEKS</button>
+        <button class="proker-filter-btn" data-proker="psdm">PSDM</button>
+        <button class="proker-filter-btn" data-proker="sosmas">SOSMAS</button>
+        <button class="proker-filter-btn" data-proker="kominfo">KOMINFO</button>
+        <button class="proker-filter-btn" data-proker="ekraf">EKRAF</button>
+        <button class="proker-filter-btn" data-proker="keagamaan">
+          Keagamaan
+        </button>
+        <button class="proker-filter-btn" data-proker="pp">PP</button>
+        <button class="proker-filter-btn" data-proker="adkesma">ADKESMA</button>
+        <button class="proker-filter-btn" data-proker="disminkeu">
+          DISMINKEU
+        </button>
+      </div>
+
+      <!-- IDK -->
+      <div class="proker-panel active" id="proker-idk">
+        <p class="proker-bidang-title">
+          A. DINAS INTERNAL DAN KADERISASI (IDK)
+        </p>
+        <div class="proker-grid">
+          <div class="proker-card">
+            <span class="proker-card-type proker">PROKER</span>
+            <h4>Program Kerja</h4>
+            <ul>
+              <li>Pelatihan Kepemimpinan Mahasiswa Menengah (PKMM)</li>
+              <li>Up Grading Akhir</li>
+            </ul>
+          </div>
+          <div class="proker-card">
+            <span class="proker-card-type agenda">AGENDA</span>
+            <h4>Agenda Kegiatan</h4>
+            <ul>
+              <li>Rapat Kerja (RAKER)</li>
+              <li>
+                Pembentukan dan Pembekalan serta Pembuburan Staff Ahli DEMA FEBI
+                2026
+              </li>
+              <li>Rapat Koordinasi Dinas Selingkup FEBI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIPEKS -->
+      <div class="proker-panel" id="proker-dipeks">
+        <p class="proker-bidang-title">B. DINAS DIPLOMASI EKSTERNAL (DIPEKS)</p>
+        <div class="proker-grid">
+          <div class="proker-card">
+            <span class="proker-card-type proker">PROKER</span>
+            <h4>Program Kerja</h4>
+            <ul>
+              <li>Road To Campus</li>
+            </ul>
+          </div>
+          <div class="proker-card">
+            <span class="proker-card-type agenda">AGENDA</span>
+            <h4>Agenda Kegiatan</h4>
+            <ul>
+              <li>Menjalin Relasi</li>
+              <li>Fornas FEBI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PSDM -->
+      <div class="proker-panel" id="proker-psdm">
+        <p class="proker-bidang-title">
+          C. DINAS PEMBERDAYAAN SUMBER DAYA MAHASISWA (PSDM)
+        </p>
+        <div class="proker-grid">
+          <div class="proker-card">
+            <span class="proker-card-type proker">PROKER</span>
+            <h4>Program Kerja</h4>
+            <ul>
+              <li>Pesona FEBI</li>
+            </ul>
+          </div>
+          <div class="proker-card">
+            <span class="proker-card-type agenda">AGENDA</span>
+            <h4>Agenda Kegiatan</h4>
+            <ul>
+              <li>FEBI Road To Event Luar Kampus</li>
+              <li>Rapat Koordinasi Dinas Selingkup FEBI</li>
+              <li>FEBI Futsal Campionship (FFC)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOSMAS -->
+      <div class="proker-panel" id="proker-sosmas">
+        <p class="proker-bidang-title">D. DINAS SOSIAL MASYARAKAT (SOSMAS)</p>
+        <div class="proker-grid">
+          <div class="proker-card">
+            <span class="proker-card-type proker">PROKER</span>
+            <h4>Program Kerja</h4>
+            <ul>
+              <li>Pengabdian Kepada Masyarakat (PKM) Ormawa FEBI</li>
+              <li>Berbuka Ramadhan Ormawa FEBI</li>
+            </ul>
+          </div>
+          <div class="proker-card">
+            <span class="proker-card-type agenda">AGENDA</span>
+            <h4>Agenda Kegiatan</h4>
+            <ul>
+              <li>FEBI Peduli</li>
+              <li>Rapat Koordinasi Dinas Selingkup FEBI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- KOMINFO -->
+      <div class="proker-panel" id="proker-kominfo">
+        <p class="proker-bidang-title">
+          E. DINAS KOMUNIKASI DAN INFORMASI (KOMINFO)
+        </p>
+        <div class="proker-grid">
+          <div class="proker-card">
+            <span class="proker-card-type agenda">AGENDA</span>
+            <h4>Agenda Kegiatan</h4>
+            <ul>
+              <li>Rapat Koordinasi Dinas Selingkup FEBI</li>
+              <li>Pengelolaan Sosial Media dan Media Promosi Mahasiswa FEBI</li>
+              <li>Pengelolaan Website</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- EKRAF -->
+      <div class="proker-panel" id="proker-ekraf">
+        <p class="proker-bidang-title">
+          F. DINAS EKONOMI KREATIF DAN KEWIRAUSAHAAN (EKRAF)
+        </p>
+        <div class="proker-grid">
+          <div class="proker-card">
+            <span class="proker-card-type proker">PROKER</span>
+            <h4>Program Kerja</h4>
+            <ul>
+              <li>FEBI Expo</li>
+            </ul>
+          </div>
+          <div class="proker-card">
+            <span class="proker-card-type agenda">AGENDA</span>
+            <h4>Agenda Kegiatan</h4>
+            <ul>
+              <li>Rapat Koordinasi Dinas Selingkup FEBI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- KEAGAMAAN -->
+      <div class="proker-panel" id="proker-keagamaan">
+        <p class="proker-bidang-title">G. DINAS KEAGAMAAN</p>
+        <div class="proker-grid">
+          <div class="proker-card">
+            <span class="proker-card-type proker">PROKER</span>
+            <h4>Program Kerja</h4>
+            <ul>
+              <li>FEBI Bergema</li>
+            </ul>
+          </div>
+          <div class="proker-card">
+            <span class="proker-card-type agenda">AGENDA</span>
+            <h4>Agenda Kegiatan</h4>
+            <ul>
+              <li>Safari Ramadhan</li>
+              <li>Pemakmuram Masjid/Musholla dan Subuh Mubarok</li>
+              <li>Rapat Koordinasi Dinas Selingkup FEBI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PP -->
+      <div class="proker-panel" id="proker-pp">
+        <p class="proker-bidang-title">H. DINAS PEMBERDAYAAN PEREMPUAN (PP)</p>
+        <div class="proker-grid">
+          <div class="proker-card">
+            <span class="proker-card-type proker">PROKER</span>
+            <h4>Program Kerja</h4>
+            <ul>
+              <li>Women Entrepreneur</li>
+            </ul>
+          </div>
+          <div class="proker-card">
+            <span class="proker-card-type agenda">AGENDA</span>
+            <h4>Agenda Kegiatan</h4>
+            <ul>
+              <li>Pembukaan dan Penutupan Fornis Akber FEBI</li>
+              <li>Rapat Koordinasi Dinas Selingkup FEBI</li>
+              <li>
+                Pengumpulan dan Pengontrolan LPJ Forum An'nisa HMPS Selingkup
+                FEBI
+              </li>
+              <li>Forum Keperempuanan FEBI (FKF)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADKESMA -->
+      <div class="proker-panel" id="proker-adkesma">
+        <p class="proker-bidang-title">
+          I. DINAS ADVOKASI DAN KESEJAHTERAAN MAHASISWA (ADKESMA)
+        </p>
+        <div class="proker-grid">
+          <div class="proker-card">
+            <span class="proker-card-type proker">PROKER</span>
+            <h4>Program Kerja</h4>
+            <ul>
+              <li>Diskusi Publik</li>
+            </ul>
+          </div>
+          <div class="proker-card">
+            <span class="proker-card-type agenda">AGENDA</span>
+            <h4>Agenda Kegiatan</h4>
+            <ul>
+              <li>Podcast FEBI</li>
+              <li>Kajian Isu Internal dan Eksternal Kampus</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- DISMINKEU -->
+      <div class="proker-panel" id="proker-disminkeu">
+        <p class="proker-bidang-title">
+          J. DINAS ADMINISTRASI DAN KEUANGAN (DISMINKEU)
+        </p>
+        <div class="proker-grid">
+          <div class="proker-card">
+            <span class="proker-card-type agenda">AGENDA</span>
+            <h4>Agenda Kegiatan</h4>
+            <ul>
+              <li>Data Base Seluruh Data Penting DEMA FEBI</li>
+              <li>
+                Pencatatan dan Pengelolaan Inventaris, Administrasi dan Keuangan
+              </li>
+              <li>Menyusun Keprotokoleran</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>DEMA FEBI 2026</h3>
+          <p>Kabinet Nebula Leviosa</p>
+          <p>Gedung FEBI Lantai 3, Kampus UIN Mahmud Yunus Batusangkar</p>
+          <p>Email: dema.febi@univ.ac.id</p>
+        </div>
+        <div class="footer-section">
+          <h3>Tautan Cepat</h3>
+          <a href="#home">Home</a>
+          <a href="#kabinet">Kabinet</a>
+          <a href="#visimisi">Visi Misi</a>
+          <a href="#pengurus">Pengurus</a>
+          <a href="#proker">Program Kerja</a>
+        </div>
+        <div class="footer-section">
+          <h3>Sosial Media</h3>
+          <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+          <a href="#"><i class="fab fa-tiktok"></i> TikTok</a>
+          <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2026 DEMA FEBI. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      // Proker filter logic
+      const prokerBtns = document.querySelectorAll(".proker-filter-btn");
+      const prokerPanels = document.querySelectorAll(".proker-panel");
+
+      prokerBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          prokerBtns.forEach((b) => b.classList.remove("active"));
+          prokerPanels.forEach((p) => p.classList.remove("active"));
+          btn.classList.add("active");
+          const target = document.getElementById(
+            "proker-" + btn.dataset.proker
+          );
+          if (target) target.classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>
